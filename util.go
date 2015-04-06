@@ -16,6 +16,7 @@ import (
 	// "code.google.com/p/go.text/encoding/traditionalchinese"
 )
 
+// ToInterfaceArray converts interface{} to []interface{} and never returns nil
 func ToInterfaceArray(i1 interface{}) []interface{} {
 	if i1 == nil {
 		return []interface{}{}
@@ -28,6 +29,8 @@ func ToInterfaceArray(i1 interface{}) []interface{} {
 	}
 	return []interface{}{}
 }
+
+// ToInterfaceMap converts interface{} to map[string]interface{} and never returns nil
 func ToInterfaceMap(i1 interface{}) map[string]interface{} {
 	if i1 == nil {
 		return map[string]interface{}{}
@@ -40,6 +43,8 @@ func ToInterfaceMap(i1 interface{}) map[string]interface{} {
 	}
 	return map[string]interface{}{}
 }
+
+// ToStringArray converts interface{} to []string and never returns nil
 func ToStringArray(i1 interface{}) []string {
 	if i1 == nil {
 		return []string{}
@@ -58,6 +63,8 @@ func ToStringArray(i1 interface{}) []string {
 	}
 	return []string{}
 }
+
+// ToStringMap converts interface{} to map[string]string and never returns nil
 func ToStringMap(i1 interface{}) map[string]string {
 	if i1 == nil {
 		return map[string]string{}
@@ -77,6 +84,8 @@ func ToStringMap(i1 interface{}) map[string]string {
 	}
 	return map[string]string{}
 }
+
+// ToString converts interface{} to string
 func ToString(i1 interface{}) string {
 	if i1 == nil {
 		return ""
@@ -109,6 +118,8 @@ func ToString(i1 interface{}) string {
 	}
 	return ""
 }
+
+// ToInt64 converts interface{} to int64
 func ToInt64(i1 interface{}) int64 {
 	if i1 == nil {
 		return 0
@@ -147,6 +158,8 @@ func ToInt64(i1 interface{}) int64 {
 	}
 	return 0
 }
+
+// ToBool converts interface{} to bool
 func ToBool(i1 interface{}) bool {
 	if i1 == nil {
 		return false
@@ -179,6 +192,7 @@ func ToBool(i1 interface{}) bool {
 	return false
 }
 
+// CloneObject creates copy of object using GOB.
 func CloneObject(a, b interface{}) {
 	buff := new(bytes.Buffer)
 	enc := gob.NewEncoder(buff)
