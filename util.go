@@ -56,11 +56,35 @@ func ToStringArray(i1 interface{}) []string {
 	case []interface{}:
 		var ss []string
 		for _, i3 := range i2 {
-			ss = append(ss, toString(i3))
+			ss = append(ss, ToString(i3))
 		}
 		return ss
 	}
 	return []string{}
+}
+func ToStringMap(i1 interface{}) map[string]string {
+	// log.Printf("toInterfaceMap %T %#v\n", i1, i1)
+	if i1 == nil {
+		// log.Println("toInterfaceMap i1 == nil")
+		return map[string]string{}
+	}
+	switch i2 := i1.(type) {
+	case map[string]interface{}:
+		// log.Println("toInterfaceMap map[string]interface{}")
+		m1 := map[string]string{}
+		for k, v := range m1 {
+			m1[k] = ToString(v)
+		}
+		return m1
+	case map[string]string:
+		// log.Println("toInterfaceMap map[string]interface{}")
+		return i2
+
+	default:
+		// log.Println("toInterfaceMap default")
+		return map[string]string{}
+	}
+	return map[string]string{}
 }
 func ToString(i1 interface{}) string {
 	if i1 == nil {
