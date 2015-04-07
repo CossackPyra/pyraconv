@@ -1,5 +1,7 @@
 # pyraconv is Go type conversion library 
 
+        go get github.com/CossackPyra/pyraconv
+
 It is used convert interface{} after unmarshaling JSON
 
 __Example__
