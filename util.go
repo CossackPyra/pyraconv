@@ -3,6 +3,7 @@ package pyraconv
 import (
 	"bytes"
 	"encoding/gob"
+	"encoding/json"
 	"fmt"
 	"math"
 	"strconv"
@@ -115,6 +116,10 @@ func ToString(i1 interface{}) string {
 			return ""
 		}
 		return *i2
+	case *json.Number:
+		return i2.String()
+	case json.Number:
+		return i2.String()
 	}
 	return ""
 }
@@ -128,6 +133,10 @@ func ToInt64(i1 interface{}) int64 {
 	default:
 		i3, _ := strconv.ParseInt(ToString(i2), 10, 64)
 		return i3
+	case *json.Number:
+		return i2.Int64()
+	case json.Number:
+		return i2.Int64()
 	case int64:
 		return i2
 	case float64:
