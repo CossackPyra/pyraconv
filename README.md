@@ -1,4 +1,6 @@
-# pyraconv is Go type conversion library to convert interface{} after unmarshaling JSON
+# pyraconv is Go type conversion library 
+
+It is used convert interface{} after unmarshaling JSON
 
 __Example__
 
