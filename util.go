@@ -134,9 +134,11 @@ func ToInt64(i1 interface{}) int64 {
 		i3, _ := strconv.ParseInt(ToString(i2), 10, 64)
 		return i3
 	case *json.Number:
-		return i2.Int64()
+		i3, _ := i2.Int64()
+		return i3
 	case json.Number:
-		return i2.Int64()
+		i3, _ := i2.Int64()
+		return i3
 	case int64:
 		return i2
 	case float64:
