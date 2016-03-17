@@ -170,6 +170,98 @@ func ToInt64(i1 interface{}) int64 {
 	return 0
 }
 
+// ToFloat64 converts interface{} to float64
+func ToFloat64(i1 interface{}) float64 {
+	if i1 == nil {
+		return 0.0
+	}
+	switch i2 := i1.(type) {
+	default:
+		i3, _ := strconv.ParseFloat(ToString(i2), 64)
+		return i3
+	case *json.Number:
+		i3, _ := i2.Float64()
+		return i3
+	case json.Number:
+		i3, _ := i2.Float64()
+		return i3
+	case int64:
+		return float64(i2)
+	case float64:
+		return i2
+	case float32:
+		return float64(i2)
+	case uint64:
+		return float64(i2)
+	case int:
+		return float64(i2)
+	case uint:
+		return float64(i2)
+	case bool:
+		if i2 {
+			return 1.0
+		} else {
+			return 0.0
+		}
+	case *bool:
+		if i2 == nil {
+			return 0.0
+		}
+		if *i2 {
+			return 1.0
+		} else {
+			return 0.0
+		}
+	}
+	return 0.0
+}
+
+// ToFloat64 converts interface{} to float64
+func ToFloat32(i1 interface{}) float32 {
+	if i1 == nil {
+		return 0.0
+	}
+	switch i2 := i1.(type) {
+	default:
+		i3, _ := strconv.ParseFloat(ToString(i2), 64)
+		return float32(i3)
+	case *json.Number:
+		i3, _ := i2.Float64()
+		return float32(i3)
+	case json.Number:
+		i3, _ := i2.Float64()
+		return float32(i3)
+	case int64:
+		return float32(i2)
+	case float64:
+		return float32(i2)
+	case float32:
+		return i2
+	case uint64:
+		return float32(i2)
+	case int:
+		return float32(i2)
+	case uint:
+		return float32(i2)
+	case bool:
+		if i2 {
+			return 1.0
+		} else {
+			return 0.0
+		}
+	case *bool:
+		if i2 == nil {
+			return 0.0
+		}
+		if *i2 {
+			return 1.0
+		} else {
+			return 0.0
+		}
+	}
+	return 0.0
+}
+
 // ToBool converts interface{} to bool
 func ToBool(i1 interface{}) bool {
 	if i1 == nil {
