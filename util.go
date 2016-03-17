@@ -67,23 +67,18 @@ func ToStringArray(i1 interface{}) []string {
 
 // ToStringMap converts interface{} to map[string]string and never returns nil
 func ToStringMap(i1 interface{}) map[string]string {
-	if i1 == nil {
-		return map[string]string{}
-	}
 	switch i2 := i1.(type) {
 	case map[string]interface{}:
 		m1 := map[string]string{}
-		for k, v := range m1 {
+		for k, v := range i2 {
 			m1[k] = ToString(v)
 		}
 		return m1
 	case map[string]string:
 		return i2
-
 	default:
 		return map[string]string{}
 	}
-	return map[string]string{}
 }
 
 // ToString converts interface{} to string
