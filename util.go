@@ -477,3 +477,9 @@ func MovingExpAvg(value float64, oldValue float64, ftime float64, time float64) 
 	r := alpha*value + (1.-alpha)*oldValue
 	return r
 }
+
+func MovingExpAvg32(value float32, oldValue float32, ftime float32, time float32) float32 {
+	alpha := 1. - float32(math.Exp(float64(-ftime/time)))
+	r := alpha*value + (1.-alpha)*oldValue
+	return r
+}
