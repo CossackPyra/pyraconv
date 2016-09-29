@@ -472,14 +472,26 @@ func TimeSince(t1 time.Time) (since string) {
 	return since
 }
 
-func MovingExpAvg(value float64, oldValue float64, ftime float64, time float64) float64 {
+func MovingExpAvg(value float64, oldValue float64, ftime float64, time float64) (r float64) {
 	alpha := 1. - math.Exp(-ftime/time)
-	r := alpha*value + (1.-alpha)*oldValue
+	r = alpha*value + (1.-alpha)*oldValue
 	return r
 }
 
-func MovingExpAvg32(value float32, oldValue float32, ftime float32, time float32) float32 {
+func MovingExpAvg32(value float32, oldValue float32, ftime float32, time float32) (r float32) {
 	alpha := 1. - float32(math.Exp(float64(-ftime/time)))
-	r := alpha*value + (1.-alpha)*oldValue
+	r = alpha*value + (1.-alpha)*oldValue
 	return r
+}
+
+func ReverseMovingExpAvg(r float64, oldValue float64, ftime float64, time float64) (value float64) {
+	alpha := 1. - math.Exp(-ftime/time)
+	value = (r - (1.-alpha)*oldValue) / alpha
+	return value
+}
+
+func ReverseMovingExpAvg32(r float32, oldValue float32, ftime float32, time float32) (value float32) {
+	alpha := 1. - float32(math.Exp(float64(-ftime/time)))
+	value = (r - (1.-alpha)*oldValue) / alpha
+	return value
 }
